@@ -1,21 +1,39 @@
-import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { ProxyConfig } from './components/ProxyConfig';
-import { Documentation } from './components/Documentation';
-import { Pricing } from './components/Pricing';
-import { Footer } from './components/Footer';
-import { Navbar } from './components/Navbar';
+import { useState } from 'react';
+import { ProxyBrowser } from './components/ProxyBrowser';
+import { ProxyHero } from './components/ProxyHero';
+import { ProxyFeatures } from './components/ProxyFeatures';
+import { ProxyFooter } from './components/ProxyFooter';
+import { HowItWorks } from './components/HowItWorks';
 
 export default function App() {
+  const [isProxying, setIsProxying] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  const handleStartProxy = (url: string) => {
+    setCurrentUrl(url);
+    setIsProxying(true);
+  };
+
+  const handleStopProxy = () => {
+    setIsProxying(false);
+    setCurrentUrl('');
+  };
+
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <Hero />
-      <Features />
-      <ProxyConfig />
-      <Documentation />
-      <Pricing />
-      <Footer />
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {!isProxying ? (
+        <>
+          <ProxyHero onStartProxy={handleStartProxy} />
+          <ProxyFeatures />
+          <HowItWorks />
+          <ProxyFooter />
+        </>
+      ) : (
+        <ProxyBrowser 
+          initialUrl={currentUrl}
+          onClose={handleStopProxy}
+        />
+      )}
     </div>
   );
 }
