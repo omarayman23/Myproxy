@@ -28,8 +28,7 @@ export function ProxyBrowser({ initialUrl, onClose }: ProxyBrowserProps) {
 
   // YOUR BACKEND ENDPOINT - Replace with your actual Google Cloud server IP
   // Example: 'http://35.196.124.59:5000/proxy'
-  const PROXY_BACKEND = 'http://142.0.3.5:5000/proxy';
-
+const PROXY_BACKEND = 'http://127.0.0.1:5000/proxy';
   const handleNavigate = (url: string) => {
     let formattedUrl = url.trim();
     
