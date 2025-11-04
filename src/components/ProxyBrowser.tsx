@@ -88,10 +88,10 @@ export function ProxyBrowser({ initialUrl, onClose }: ProxyBrowserProps) {
   // This is a DEMO - you need to implement the backend
   const getProxiedUrl = () => {
     // In production, this would call your backend:
-    // return `${PROXY_BACKEND}?url=${encodeURIComponent(currentUrl)}`;
+     return `${PROXY_BACKEND}?url=${encodeURIComponent(currentUrl)}`;
     
     // For demo purposes, we'll show an explanation
-    return null;
+    
   };
 
   return (
@@ -203,39 +203,15 @@ export function ProxyBrowser({ initialUrl, onClose }: ProxyBrowserProps) {
         ) : (
           <div className="h-full p-8 overflow-auto">
             {/* DEMO NOTICE - Remove this when backend is implemented */}
-            <Alert className="max-w-4xl mx-auto border-blue-200 bg-blue-50">
-              <AlertCircle className="h-4 w-4 text-blue-600" />
-              <AlertDescription className="text-blue-900">
-                <strong className="block mb-2">🚧 Backend Implementation Required</strong>
-                <p className="mb-3">
-                  This is the frontend interface. To make it work, you need to implement the backend proxy service.
-                </p>
-                <div className="bg-white rounded p-4 mt-3">
-                  <p className="mb-2"><strong>Current URL to proxy:</strong></p>
-                  <code className="text-sm text-blue-700 break-all">{currentUrl}</code>
-                  
-                  <p className="mt-4 mb-2"><strong>What the backend needs to do:</strong></p>
-                  <ol className="text-sm space-y-1 list-decimal list-inside text-gray-700">
-                    <li>Receive the target URL from this frontend</li>
-                    <li>Fetch the content from the target website</li>
-                    <li>Rewrite all URLs in the HTML (links, images, scripts, CSS)</li>
-                    <li>Replace them with proxied URLs</li>
-                    <li>Return the modified HTML to display here</li>
-                  </ol>
-                  
-                  <p className="mt-4 text-sm text-gray-600">
-                    See the Documentation section below for implementation details.
-                  </p>
-                </div>
-              </AlertDescription>
-            </Alert>
+            
 
             {/* This is where the proxied content would appear */}
-            {/* <iframe 
+            { 
+            <iframe 
               src={getProxiedUrl()} 
               className="w-full h-full border-0"
               sandbox="allow-same-origin allow-scripts allow-forms"
-            /> */}
+            /> }
           </div>
         )}
       </div>
